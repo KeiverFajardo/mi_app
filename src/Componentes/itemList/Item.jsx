@@ -14,7 +14,6 @@ const Item = ({producto}) => {
 
             </div>
         </div>
-
     )
 }
 

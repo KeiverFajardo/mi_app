@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemDetailContainer from './Componentes/NavBar/ItemDetailContainer';
 
 
 function App() {
@@ -14,13 +15,13 @@ function App() {
       //alert(cant)
     }
 
-    console.dir(count)
     return(
       <div className="App"
       
       > 
         <NabVar count={count}/>
         <ItemListContainer saludo="Hola Buen dia" añadir={añadir} />
+        <ItemDetailContainer  />
       </div>
       
     );
