@@ -1,9 +1,9 @@
 const productos = [
-        {id: 1, nombre: "Camara", precio: 120, color: "rojo", foto: "../img/camara.jpg"},
-        {id: 2, nombre: "Laptop", precio: 140, color: "verde", foto: "../img/laptop.jpg"},
-        {id: 3, nombre: "Celular", precio: 70, color: "azul", foto: "../img/celular.jpg"},
-        {id: 4, nombre: "Memoria", precio: 90, color: "gris", foto: "../img/memoria.jpg"},
-        {id: 9, nombre: "Mouse", precio: 90, color: "gris", foto: "https://images.app.goo.gl/d9qAa7HRog6aKUGu5"},
+        {id: 1, categoria: "camara", nombre: "Camara", foto: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nikonamericalatina.com%2Fnikon-products%2Fdslr-cameras%2Findex.page&psig=AOvVaw2kd5S40rC1Qar_ERjyAR58&ust=1632364642275000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCOD9mKfGkfMCFQAAAAAdAAAAABAD"},
+        {id: 2, categoria: "laptop", nombre: "Laptop",  foto: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnetpc.uy%2Ftienda%2Fnotebook-asus-zenbook-pro-duo-15-6-4k-i9-1tb-32gb-rtx2060-bajo-pedido%2F&psig=AOvVaw14PWlMkC5XSQDBU1dIcK8S&ust=1632364700670000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCOjH4MPGkfMCFQAAAAAdAAAAABAT"},
+        {id: 3, categoria: "camara", nombre: "Camara", foto: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nikonamericalatina.com%2Fnikon-products%2Fdslr-cameras%2Findex.page&psig=AOvVaw2kd5S40rC1Qar_ERjyAR58&ust=1632364642275000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCOD9mKfGkfMCFQAAAAAdAAAAABAD"},
+        {id: 4, categoria: "laptop", nombre: "Laptop",  foto: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnetpc.uy%2Ftienda%2Fnotebook-asus-zenbook-pro-duo-15-6-4k-i9-1tb-32gb-rtx2060-bajo-pedido%2F&psig=AOvVaw14PWlMkC5XSQDBU1dIcK8S&ust=1632364700670000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCOjH4MPGkfMCFQAAAAAdAAAAABAT"},
+        {id: 5, categoria: "camara", nombre: "Camara", foto: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nikonamericalatina.com%2Fnikon-products%2Fdslr-cameras%2Findex.page&psig=AOvVaw2kd5S40rC1Qar_ERjyAR58&ust=1632364642275000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCOD9mKfGkfMCFQAAAAAdAAAAABAD"},
 ]
 
 export const promesa = new Promise((resolve) => {
@@ -13,12 +13,10 @@ export const promesa = new Promise((resolve) => {
         }, 2000)
 })
 
-
-const productofiltro = {id: 9, nombre: "Mouse", precio: 90, descripcion: "Dispositivo de la computadora que se maneja con una sola mano y permite dirigir el movimiento del puntero sobre la pantalla para transmitir órdenes diversas.", color: "gris", foto: "https://images.app.goo.gl/d9qAa7HRog6aKUGu5"}
-
+const productoAux = productos.filter((item) => item.id === 4)
 export const promesaUnica = new Promise((resolver) => {
 
         setTimeout(() => {
-            resolver(productofiltro)
+            resolver(productoAux)
         }, 2000)
 })
