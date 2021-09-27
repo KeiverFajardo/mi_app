@@ -1,0 +1,76 @@
+
+
+.App {
+    width: 95%;
+    max-width: 1500px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.active {
+    font-weight: bold;
+    color: #61dafb;
+}
+
+.barraNav {
+    position: sticky;
+    align-items: center;
+    width: auto;
+    justify-content: center;
+    background-color: black;
+}
+
+
+
+nav div a li {
+    float: left;
+}
+   nav div a li {
+        display: block;
+        padding: 20px;
+        color: #fff;
+        text-decoration: none;
+    }
+        nav div a li a:hover {
+            background: #2980b9
+        }
+
+.menu-fixed {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+    max-width: 1500px;
+    background-color: skyblue;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, .5);
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.tarjeta {
+    width: 500px;
+    margin: 700px;
+}
+
+img {
+    width: 300px;
+    height: 400px;
+}
+
+.carrito {
+    width: 60px;
+    height: 60px;
+    margin: 15px;
+    box-shadow: slategrey;
+}
+

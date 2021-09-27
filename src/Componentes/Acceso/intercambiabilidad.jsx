@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 const InputCount= ()=>{
+
     return <button className="btn btn-outline-primary" onclick={()=>console.log('carrito')}>Ir al cart o terminar compra</button>
 }
 
 const ButtonCount= (handleInter)=>{
+
     return <button className="btn btn-outline-success" onclick={handleInter}>Agregar al carrito</button>
 }
 
@@ -21,7 +23,8 @@ const Intercambiabilidad = () => {
             <h2>Item Description</h2>
             {
                 inputType === 'button' ?
-                    <ButtonCount handleInter={handleInter}/>
+                    <ButtonCount handleInter={handleInter}
+                    />
                 :
                     <InputCount />
             }

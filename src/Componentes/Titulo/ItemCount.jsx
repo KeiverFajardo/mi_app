@@ -24,23 +24,26 @@ const ItemCount = ({stock, inicial, añadir}) => {
 
     return(
         <div>
-            <h3>soy item Count</h3>
-            <label>{count}</label><br/>
-            <button onClick={sumar}>+</button>
-            { cambiarBotonsito ? 
-            <button onClick={agregarCarrito}>Agregar al carrito</button>
+            { cambiarBotonsito 
+            ? 
+            <div>
+                <h3>soy item Count</h3>
+                <button onClick={sumar}>+</button>
+                <label>{count}</label>
+                <button onClick={restar}>-</button><br/>
+                <button onClick={agregarCarrito} className="btn btn-outline-success">Agregar al carrito</button>
+            </div>
             : 
             <div>
                 <Link to={'/cart'} >
-                    <button >Terminar compra</button>
+                    <button className="btn btn-outline-success w-250">Terminar compra</button>
                 </Link>
                 <Link to={'/'} >
-                    <button >seguir comprando</button>
+                    <button className="btn btn-outline-info w-250">Seguir comprando</button>
                 </Link>
             </div>
             }
-            
-            <button onClick={restar}>-</button>
+  
         </div>
     )
 }

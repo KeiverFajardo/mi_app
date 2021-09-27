@@ -3,7 +3,7 @@ import { promesa } from '../../utils/Mock';
 import { useParams } from "react-router-dom";
 
 import ItemList from '../itemList/itemList';
-
+import '../styles/styles.css'
 /*
 const getFech = new Promise((res, rej) => {
 
@@ -26,10 +26,7 @@ function ItemListContainer ({saludo}) {
     const [loading, setLoading] = useState(true)
     const {idCategoria} = useParams()
 
-    const añadir = (cant) => {
-        console.log(cant)
-    }
-
+    
    useEffect(() =>{
 
         if(idCategoria) {
@@ -53,14 +50,14 @@ function ItemListContainer ({saludo}) {
    console.log(idCategoria);
     return (
         <div>
-            <h1>{saludo}</h1>
-
-            {
-                loading ? <h2>Cargando ...</h2> :  <ItemList productos={productos} />
-            }
-
-           
-
+            <div>
+                <h1>{saludo}</h1>
+            </div>
+            <div>
+                {
+                    loading ? <h2>Cargando ...</h2> :  <ItemList productos={productos} />
+                }
+            </div>
         </div>
     )
 }

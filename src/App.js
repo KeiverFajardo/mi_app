@@ -1,6 +1,5 @@
 import NabVar from './Componentes/NavBar/NabVar';
 import ItemListContainer from './Componentes/containers/ItemListContainer';
-import {  useState } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Cart from './Componentes/Cart/Cart';
 
@@ -26,7 +25,7 @@ function App() {
           className="App"
           //onClick={handleclick}  
         > 
-          <NabVar />
+          <NabVar prop={0}/>
           
           <Switch>
             <Route exact path='/'>

@@ -1,11 +1,14 @@
 import React from 'react';
 
+
 const Cart = () => {
    
     return (
-        <div>
-              Hola soy cart  
-        </div>
+        <>
+            <div>
+              <h1> Hola soy cart  </h1>  
+            </div>
+        </>
     );
 
 }
