@@ -4,10 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { Link, NavLink } from "react-router-dom";
 import '../styles/styles.css'
+import { useCartContext } from "../../context/cartContext";
 
 
 const NabVar = (props) => {
     const {count} = props
+    const {iconCart} = useCartContext()
     return (
         <>
             <Navbar className="menu-fixed">
@@ -44,7 +46,8 @@ const NabVar = (props) => {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-                    <Link exact to='/cart'>
+                    <Link exact to='/Cart'>
+                        {iconCart()}
                         <CartWidget count={count}/>
                     </Link>
             </Navbar>

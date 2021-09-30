@@ -2,7 +2,6 @@ import React from "react";
 import hola from './laptopAsus.jpg';
 import ItemCount  from '../itemDetail/ItemCount';
 import { useState, useContext } from "react";
-import { contextApp } from "../../App";
 import { useCartContext } from "../../context/cartContext";
 import { Link } from 'react-router-dom'
 
@@ -10,20 +9,13 @@ import { Link } from 'react-router-dom'
 
 
 const ItemDetail = ({item}) => {
-     
-    const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0)
     const [cambiarBotonsito, setCambiarBotonsito] = useState(true)
 
-    
-
     const {addToCart} = useCartContext()
-    const {state} = useContext(contextApp)
 
     const añadir = (cant) => {
       console.log(cant);
-        setCantidadSeleccionada(cant)
-      //alert(cant)
-      addToCart({item: item, cantidad: cant})
+      addToCart(item, cant)
     } 
 
     console.log(addToCart)
@@ -48,7 +40,7 @@ const ItemDetail = ({item}) => {
                 <ItemCount stock={5} inicial={1} añadir={añadir} cambiarBoton={setCambiarBotonsito}/>
                 :
                   <div>
-                      <Link to={'/cart'} >
+                      <Link to={'/Cart'} >
                           <button className="btn btn-outline-success w-250">Terminar compra</button>
                       </Link>
                       <Link to={'/'} >
