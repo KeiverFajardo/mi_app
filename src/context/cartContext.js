@@ -10,16 +10,20 @@ export const useCartContext = () => useContext(cartContext)
 export default function CartContextProvider ({children}) {
     const [carList, setCarList] = useState([])
 
-    const addToCart = (item) => {
-        let prevCart = [...carList]
+    const addToCart = (item, cant) => {
+        const index = carList.findIndex(i => i.item.id === item.id)
+        console.log(index)
 
-        if (prevCart.some(i => i.item.id === item.item.id)){
-            prevCart.find(i => i.item.id === item.item.id).cant += item.cant
-            setCarList(prevCart)
-        } else {
-            setCarList([...carList, item])
+        if (index> -1) {
+            const oldQy = carList[index].cant
+
+            carList.splice(index, 1)
+            setCarList([...carList, {item, cant: cant + oldQy}])
         }
-
+        else {
+            setCarList([...carList, {item, cant}])
+        }
+        
     }
     
     const deleteItemCart = (item) => {

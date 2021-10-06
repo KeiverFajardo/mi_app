@@ -19,20 +19,18 @@ const ItemDetail = ({item}) => {
     } 
 
     console.log(addToCart)
+    console.log(item)
 
     return (
-        <>
+        <div>
             
-            <div className="card w-25 mt-5">
+            <div className="card w-90 mt-6">
                 <h2>{item.nombre}</h2>
                 <h2>{item.id}</h2>
                 <p>{item.descripcion}</p>
                 <h2>{item.precio}</h2>
-                <img src={hola} alt="camara" className='w-30'/>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt similique architecto dolorum quibusdam unde aliquid quaerat, ut sint? Quos facilis deleniti a tempore quia eligendi laborum eaque, veritatis assumenda accusantium?
-
-                </p>
-
+                <img src={item.foto} alt="camara" className='w-30'/>
+            
             </div>  
 
                 { cambiarBotonsito 
@@ -50,7 +48,7 @@ const ItemDetail = ({item}) => {
                 }               
               
             
-        </>
+        </div>
     )
 }
 

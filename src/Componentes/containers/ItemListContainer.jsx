@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { promesa } from '../../utils/Mock';
 import { useParams } from "react-router-dom";
 
 import ItemList from '../itemList/itemList';
 import '../styles/styles.css'
+import { getFirestore } from '../../services/getFirebase';
 /*
 const getFech = new Promise((res, rej) => {
 
@@ -19,7 +19,6 @@ const getFech = new Promise((res, rej) => {
     //console.log('tarea')
 })*/
 
-console.log(promesa)
 
 function ItemListContainer ({saludo}) {
     const [productos , setProductos] = useState([])
@@ -29,6 +28,38 @@ function ItemListContainer ({saludo}) {
     
    useEffect(() =>{
 
+    if (idCategoria) {
+        const dbQuery = getFirestore()
+        dbQuery.collection('items').where('categoria', '==', idCategoria).get()
+        .then(resp => {
+            setProductos( resp.docs.map(producto => ( {id: producto.id, ...producto.data() } )))
+        })
+        .catch(err => console.log(err))
+        .finally(() => setLoading(false))
+    }
+    else {
+        const dbQuery = getFirestore()
+        dbQuery.collection('items').get()
+        .then(resp => {
+            setProductos( resp.docs.map(producto => ( {id: producto.id, ...producto.data() } )))
+        })
+        .catch(err => console.log(err))
+        .finally(() => setLoading(false))
+    }
+
+    
+    /*
+    filtrar por una condicion en este caso por precio
+     const dbQuery = getFirestore()
+        dbQuery.collection('items').where('precio', '>', 50).get()
+        .then(resp => {
+            setProductos( resp.docs.map(producto => ( {id: producto.id, ...producto.data() } )))
+        })
+        .catch(err => console.log(err))
+        .finally(() => setLoading(false))
+
+        */
+/*
         if(idCategoria) {
             promesa
             .then(respuesta => {
@@ -44,12 +75,12 @@ function ItemListContainer ({saludo}) {
             .catch(error => console.log(error))
             .finally(() => setLoading(false)) 
         }
-
+*/
    }, [idCategoria])
-
-   console.log(idCategoria);
+  // console.log(productos)
+   
     return (
-        <div>
+        <>
             <div>
                 <h1>{saludo}</h1>
             </div>
@@ -58,7 +89,7 @@ function ItemListContainer ({saludo}) {
                     loading ? <h2>Cargando ...</h2> :  <ItemList productos={productos} />
                 }
             </div>
-        </div>
+        </>
     )
 }
 

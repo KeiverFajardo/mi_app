@@ -33,7 +33,7 @@ function App() {
 
                                   <Route exact path='/item/:id' component={ItemDetailContainer}/>
                                 
-                                  <Route exact path='./Cart' component={Cart} />
+                                  <Route exact path='/Cart' component={Cart} />
                                 </Switch>
                           </div>
                     </BrowserRouter>
