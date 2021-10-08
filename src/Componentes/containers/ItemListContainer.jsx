@@ -81,12 +81,12 @@ function ItemListContainer ({saludo}) {
    
     return (
         <>
-            <div>
+            <div className="row">
                 <h1>{saludo}</h1>
             </div>
             <div>
                 {
-                    loading ? <h2>Cargando ...</h2> :  <ItemList productos={productos} />
+                    loading ? <h2>Cargando contenido...</h2> :  <ItemList productos={productos} />
                 }
             </div>
         </>

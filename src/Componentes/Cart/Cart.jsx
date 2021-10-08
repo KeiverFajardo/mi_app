@@ -13,7 +13,7 @@ const Cart = () => {
             <center>
                 { carList.length === 0 
                 ?  
-                    <div>
+                    <div className="row">
                         <h3>No hay productos en el carrito.</h3>
                         <Link to={'/'} className="btn btn-outline-info w-250">
                             Seguir comprando.
@@ -22,10 +22,21 @@ const Cart = () => {
                     
                 :
                     carList.map(item => 
-                                            <div key={item.id}>
-                                                <h2>{item.item.nombre}</h2>
-                                                <h3>{item.item.categoria}</h3>
-                                                
+                                            <div className="card product-card" key={item.id}>
+                                                <div className="card w-90 mt-6">
+                                                    <div className="col-6">
+                                                        <img src={item.item.foto} alt="" className='w-30'/>
+                                                    </div>
+                                                    <div className="row">
+                                                        <h3>{item.item.nombre}</h3>
+                                                        <span>Categoria: {item.item.categoria}</span> 
+                                                        <p>Descripcion: {item.item.descripcion}</p> 
+                                                        <p>Precio: ${item.item.precio}</p> 
+                                                        <p>Cantidad: {item.cant}</p> 
+                                                    </div>
+                    
+                                                </div>    
+                                      
                                                 <button className="btn btn-outline-danger w-250" onClick={() => deleteItemCart(item)}>Eliminar</button>
                                                 <hr />
                                             </div> 

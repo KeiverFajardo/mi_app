@@ -27,7 +27,7 @@ function App() {
                                 
                                 <Switch>
                                   <Route exact path='/'>
-                                    <ItemListContainer saludo="Hola Soy item list container" />
+                                    <ItemListContainer saludo="Bienvenido a Tecnology Shark" />
                                   </Route>
                                   <Route path='/categoria/:idCategoria' component={ItemListContainer} />
 

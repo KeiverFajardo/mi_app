@@ -5,7 +5,7 @@ import { getFirestore } from "../../services/getFirebase";
 
 
 const ItemDetailContainer = () => {
-    const [item, setItem] = useState({});
+    const [item, setItem] = useState([]);
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
 
@@ -13,20 +13,25 @@ const ItemDetailContainer = () => {
 
         useEffect(() => {
            if (id) {
-            const dbQuery = getFirestore()
-            dbQuery.collection('items').where('id', '===', id).get()
-            .then(resp => {
-                console.log(resp.docs)
-                setItem(resp.docs.map(producto => ( {id: producto.id, ...producto.data() } )))
-            })
-        .catch(err => console.log(err))
-        .finally(() => setLoading(false))
-/*
-                    const itemFiltrado = resp.filter((item) => item.id === parseInt(id))
-                    setItem(itemFiltrado)*/
-                } 
-    
-        }, [id])
+                const dbQuery = getFirestore()
+                dbQuery.collection('items').doc(id).get()
+                .then(resp => {
+                    console.log(resp)
+                    setItem({id: resp.id, ...resp.data() } )
+                })
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+            }
+            else {
+                const dbQuery = getFirestore()
+                dbQuery.collection('items').get()
+                .then(resp => {
+                    console.log(resp)
+                    setItem(resp.docs.map(producto => ({id: resp.id, ...resp.data() })) )
+                })
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+            }}, [])
         
         console.log(item)
         return (
