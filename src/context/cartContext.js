@@ -12,7 +12,7 @@ export default function CartContextProvider ({children}) {
 
     const addToCart = (item, cant) => {
         const index = carList.findIndex(i => i.item.id === item.id)
-        console.log(index)
+       // console.log(index)
 
         if (index> -1) {
             const oldQy = carList[index].cant

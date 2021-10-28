@@ -24,7 +24,7 @@ const ItemCount = ({stock, inicial, añadir, cambiarBoton}) => {
     return(
         <div>
             
-            <div>
+            <div className="selectconteo">
                 
                 <button onClick={sumar} className="btn btn-outline-success w-250">+</button>
                 <label className="btn btn-outline-success w-250">{count}</label>

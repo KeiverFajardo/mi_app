@@ -20,14 +20,14 @@ function App() {
             
                     <BrowserRouter> 
                           <div 
-                            className="App border border-3 border-primary"
+                            className="App "
                             //onClick={handleclick}  
                           > 
                                 <NabVar prop={0}/>
                                 
                                 <Switch>
                                   <Route exact path='/'>
-                                    <ItemListContainer saludo="Bienvenido a Tecnology Shark" />
+                                    <ItemListContainer saludo="" />
                                   </Route>
                                   <Route path='/categoria/:idCategoria' component={ItemListContainer} />
 

@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 
 const Item = ({producto}) => {
     return (
-        <div className="card product-card w-auto" key={producto.id}>
-            <div className="card w-90 mt-4">
+        <div className="card product-card w-33 col-4 mt-4 ">
+            <div className="card w-100">
         
                 <div className='card-header'> <h3> {producto.nombre} </h3></div>
                 <div className="card-body">

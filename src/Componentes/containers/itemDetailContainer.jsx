@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
                 const dbQuery = getFirestore()
                 dbQuery.collection('items').doc(id).get()
                 .then(resp => {
-                    console.log(resp)
+                   // console.log(resp)
                     setItem({id: resp.id, ...resp.data() } )
                 })
                 .catch(err => console.log(err))
@@ -33,7 +33,8 @@ const ItemDetailContainer = () => {
                 .finally(() => setLoading(false))
             }}, [])
         
-        console.log(item)
+    //    console.log(item)
+      console.log(loading)
         return (
             <>
                 {   item && <ItemDetail key={ item.id } item={ item }/> }

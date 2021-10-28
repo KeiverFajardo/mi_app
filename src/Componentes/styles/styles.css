@@ -1,18 +1,13 @@
 
 
-.App {
-    width: 95%;
-    max-width: 1500px;
-    margin: auto;
-    justify-content: center;
+div .product-card{
+    width: 30%;
     align-items: center;
-    text-align: center;
-
 }
 
 .active {
     font-weight: bold;
-    color: #61dafb;
+    color: #000000;
 }
 
 .barraNav {
@@ -23,7 +18,22 @@
     background-color: black;
 }
 
+a .nav-link {
+    color: black;
+}
 
+.navlink2 {
+    color: rgb(255, 255, 255);
+    font-size: larger;
+    text-shadow: 10px 10px #eeeeee;
+}
+
+.carrito{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    box-shadow: cornflowerblue;
+}
 
 nav div a li {
     float: left;
@@ -31,11 +41,11 @@ nav div a li {
    nav div a li {
         display: block;
         padding: 20px;
-        color: #fff;
+        color: rgb(235, 235, 235);
         text-decoration: none;
     }
         nav div a li a:hover {
-            background: #2980b9
+            background: #ffffff
         }
 
 .menu-fixed {
@@ -44,17 +54,25 @@ nav div a li {
     top: 0;
     width: 100%;
     max-width: 1500px;
-    background-color: skyblue;
-    box-shadow: 0px 4px 3px rgba(0, 0, 0, .5);
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, .8);
 }
+
 
 div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    align-content: center;
     margin: 5px;
+}
+
+nav div .container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .tarjeta {
@@ -72,5 +90,70 @@ img {
     height: 60px;
     margin: 15px;
     box-shadow: slategrey;
+}
+
+main .detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+.selectconteo{
+    width: 100%;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+.formulario{
+    margin: 50px;
+    padding: 50px;
+}
+
+.datos{
+font-style: italic;
+font-size: 24px;
+}
+
+.large{
+    width: 100%;
+}
+
+.terminarSeguir {
+    width: 100%;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}
+
+#listarproduct{
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar-light .container{
+        flex: auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    
+    }
+    
+    .navbar-expand {
+        flex: auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+      
+    }
 }
 

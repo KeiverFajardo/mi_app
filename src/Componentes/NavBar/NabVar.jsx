@@ -16,7 +16,7 @@ const NabVar = (props) => {
                 <Container>
                     <Link exact to='/'>
                         <Navbar.Brand exact to="/" className="text-uppercase active">
-                            <li class="nav-item"><a class="nav-link" href="#home">Tecnology Shark.</a></li>
+                            <li class="nav-item"><a class="nav-link navlink2" href="#home">Tecnology Shark.</a></li>
                         </Navbar.Brand>
                     </Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

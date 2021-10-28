@@ -12,12 +12,22 @@ const Cart = () => {
     const [formData, setFormData] = useState({
         name: '',
         tel: '',
-        email: ''
+        email: '',
+        email2: ''
     })
 
+    const [nOrden, setNOrden] = useState('')
+   
+    const [venta, setVenta] = useState(false)
+
     const {carList, deleteItemCart, precioTotal} = useCartContext()
-    
-  
+    console.log(carList)
+    let totals=0;
+    let mensajes='';
+    const sumars = (x) => {
+        totals = totals + x
+    }
+
     const handleOnSubmit = (e) =>{
         e.preventDefault()
         let orden = {}
@@ -26,7 +36,7 @@ const Cart = () => {
         orden.buyer = formData
 
         orden.total = precioTotal();
-
+      
         orden.items = carList.map(cartItem => {
             const id = cartItem.item.id;
             const title = cartItem.item.nombre;
@@ -35,9 +45,6 @@ const Cart = () => {
             return {id, title, price}
         })
 
-
-
-
         const db = getFirestore();
         const ordersCol = db.collection('orders');
         //db.collection('orders').doc(id).set(orden);
@@ -45,7 +52,9 @@ const Cart = () => {
         //
         ordersCol.add(orden)
         .then((IdDocumento) => {
-            console.log(IdDocumento.id)
+            console.log(IdDocumento.id);
+            setNOrden(IdDocumento.id);
+            setVenta(true)
         })
         .catch( err => {
             console.log(err);
@@ -54,7 +63,8 @@ const Cart = () => {
             setFormData({
                 name: '',
                 tel: '',
-                email: ''
+                email: '',
+                email2: ''
 
             })
           //  borrarLista()
@@ -83,6 +93,7 @@ const Cart = () => {
             })
         })
         console.log(orden)
+        
     }
     
 
@@ -93,11 +104,12 @@ const Cart = () => {
             [e.target.name]: e.target.value
         })
         
-        
-        
-    }
-    console.log(formData)
 
+    }
+ 
+
+    let email1;
+    let email2;
     return (
         <div>
             <center>
@@ -115,32 +127,26 @@ const Cart = () => {
 
                         
                         {carList.map(item => 
-                                                <div className="card product-card" key={item.id}>
-                                                    <div className="card w-90 mt-6">
-                                                        <div className="col-6">
-                                                            <img src={item.item.foto} alt="" className='w-30'/>
-                                                        </div>
-                                                        <div className="row">
-                                                            <label>{item.item.nombre}</label>
-                                                            <span>Categoria: {item.item.categoria}</span> 
-                                                            <label>Descripcion: {item.item.descripcion}</label> 
-                                                            <label>Precio: $ {item.item.precio}</label> 
-                                                            <label>Cantidad: {item.cant}</label> 
-                                                        </div>
-                        
-                                                    </div>    
-                                        
+                                                <div className="card product-card w-100 col-4" key={item.id}>
+                                                    <li> {item.item.nombre}  - $ {item.item.precio}  - {item.cant} unidades - $ {(item.item.precio * item.cant)}</li>
+                                                    {sumars(item.item.precio * item.cant)}
                                                     <button className="btn btn-outline-danger w-250" onClick={() => deleteItemCart(item)}>Eliminar</button>
-                                                    <hr />
+                                                
                                                 </div> 
                         )}
                 
-
-                                    <form 
+                        {
+                            <div className="card product-card w-50 col-4">
+                                <label>Monto total de la compra:{totals }</label>
+                            </div>
+                        }
+                                    <form className="card col-12 formulario"
+                                        
                                         onSubmit={handleOnSubmit}
                                         onChange={handleOnChange}
                                     >
                                         <div className="row">
+                                            <p className="datos">Ingrese sus datos para culminar la compra</p>
                                             <input className="btn btn-outline-info w-50 mt-2 mr-2"
                                                 type="text"
                                                 placeholder='Ingrese el nombre'
@@ -157,19 +163,35 @@ const Cart = () => {
                                                 type="text"
                                                 placeholder='Ingrese el email'
                                                 name='email'
-                                                value={formData.email} 
+                                                value={email1 = formData.email} 
                                             />
                                             <input className="btn btn-outline-info w-50 mt-2 mr-2"
                                                 type="text"
                                                 placeholder='Confirme el email'
                                                 name='email2' 
-                                                
+                                                value={email2 = formData.email2}
                                             />
-                                            <button className="btn btn-outline-success w-100 mt-2">Terminar Compra</button>
+
+                                            {((email1 === email2) && (email1 !== '')) ? <button className="btn btn-outline-success w-50 mt-2">Terminar Compra</button>
+                                                                                        : <p>{mensajes}</p>
+                                            }
+                                            
+                                            
+                                            <h3>{mensajes}</h3>
+                                            
                                         </div>
                                     </form>
 
+                                        {venta ? 
+                                            <div>
+                                                    <h2>Detalle de la compra</h2>
+                                                    <h3>Su numero de orden es: '{nOrden}' </h3>  
+                                                    <div>
+                                                        
+                                                    </div>
+                                            </div>
 
+                                        : ''}
                     </div>
                 }
             </center>
