@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 
 
-
+ 
 const ItemDetail = ({item}) => {
     const [cambiarBotonsito, setCambiarBotonsito] = useState(true)
 
