@@ -16,7 +16,7 @@ const ItemDetail = ({item}) => {
 
       addToCart(item, cant)
     } 
-
+ 
 
     let aux= undefined
     aux = (item.hasOwnProperty("stock"))
