@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { getFirestore } from '../../services/getFirebase';
 import firebase from 'firebase';
 import 'firebase/firestore'
-
+import Buy from './Buy';
 
 const Cart = () => {
     const [formData, setFormData] = useState({
@@ -47,9 +47,8 @@ const Cart = () => {
 
         const db = getFirestore();
         const ordersCol = db.collection('orders');
-        //db.collection('orders').doc(id).set(orden);
+    
 
-        //
         ordersCol.add(orden)
         .then((IdDocumento) => {
             console.log(IdDocumento.id);
@@ -67,11 +66,9 @@ const Cart = () => {
                 email2: ''
 
             })
-          //  borrarLista()
+      
             console.log('termino la promesa')
         })
-
-      //  db.collection('orders').doc('6xPoNdVli5Vz2c6QF2OE').update({total: 600}).then(resp => console.log(resp)) ejemplo de actualizar
 
       //actualiza todos los items que estan en el listado del cart del cartcontext
         const itemsToUpdate = db.collection('items').where(
@@ -171,24 +168,25 @@ const Cart = () => {
                                                 name='email2' 
                                                 value={email2 = formData.email2}
                                             />
-
-                                            {((email1 === email2) && (email1 !== '')) ? <button className="btn btn-outline-success w-50 mt-2">Terminar Compra</button>
-                                                                                        : <p>{mensajes}</p>
+                            
+                                            {((email1 === email2) && (email1 !== '')) ? 
+                                <button className="btn btn-outline-success w-50 mt-2">Terminar compra</button>
+                                
+                                                                                        : <p></p>
                                             }
                                             
                                             
-                                            <h3>{mensajes}</h3>
+                                      
                                             
                                         </div>
                                     </form>
 
                                         {venta ? 
                                             <div>
-                                                    <h2>Detalle de la compra</h2>
-                                                    <h3>Su numero de orden es: '{nOrden}' </h3>  
-                                                    <div>
-                                                        
-                                                    </div>
+                                                    <h3>Su numero de orden es: '{nOrden.toUpperCase()}' </h3>
+                                                    <h4>Descripcion de la compra:</h4> 
+                                                    <Buy orden={nOrden} />
+                                                    <h4><label>Monto total de la compra:$ {totals } Pesos Uruguayos</label></h4>
                                             </div>
 
                                         : ''}

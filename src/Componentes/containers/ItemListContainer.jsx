@@ -19,10 +19,7 @@ function ItemListContainer ({saludo}) {
         .then(resp => {
             setProductos( resp.docs.map(producto => ( {id: producto.id, ...producto.data() } )))
         })
-        .catch(err => alert('el producto no existe' + err)
-            
-            //console.log(err)
-            )
+        .catch(err => console.log(err))
         .finally(() => setLoading(false))
     }
     else {
@@ -36,7 +33,6 @@ function ItemListContainer ({saludo}) {
     }
 
    }, [idCategoria])
-  // console.log(productos)
    
     return (
         <>

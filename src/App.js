@@ -7,6 +7,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './Componentes/containers/ItemDetailContainer';
 import  CartContextProvider  from './context/cartContext';
+import Buy from './Componentes/Cart/Buy';
 
 
 
@@ -34,6 +35,8 @@ function App() {
                                   <Route exact path='/item/:id' component={ItemDetailContainer}/>
                                 
                                   <Route exact path='/Cart' component={Cart} />
+
+                                  <Route exact path='/Buy' component={Buy} />
                                 </Switch>
                           </div>
                     </BrowserRouter>
